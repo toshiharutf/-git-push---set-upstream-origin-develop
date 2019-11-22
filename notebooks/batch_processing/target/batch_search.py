@@ -1,15 +1,18 @@
+def execute_search_batch(scenario, planning_problem_set, veh_type_id, 
+						 planning_problem_idx, planner_id, max_tree_depth):
 
-def execute_search_batch(scenario, planning_problem_set, veh_type_id=2, 
-						 planning_problem_idx=0, planner_id=1, max_tree_depth=100):
 	# append main directory
 	import sys
-	sys.path.append("../../GSMP/tools/")
-	sys.path.append("../../GSMP/tools/commonroad-collision-checker")
-	sys.path.append("../../GSMP/tools/commonroad-road-boundary")
-	sys.path.append("../../GSMP/motion_automata")
-	sys.path.append("../../GSMP/motion_automata/vehicle_model")
-
 	import os
+
+	path_commonroad_search = "../../../"
+	sys.path.append(os.path.join(path_commonroad_search, "GSMP/tools/"))
+	sys.path.append(os.path.join(path_commonroad_search, "GSMP/tools/commonroad-collision-checker/"))
+	sys.path.append(os.path.join(path_commonroad_search, "GSMP/tools/commonroad-road-boundary/"))
+	sys.path.append(os.path.join(path_commonroad_search, "GSMP/motion_automata/"))
+	sys.path.append(os.path.join(path_commonroad_search, "GSMP/motion_automata/vehicle_model/"))
+	sys.path.append(os.path.join(path_commonroad_search, "GSMP/motion_automata/motion_primitives/"))
+	
 	import time
 	from multiprocessing import Manager, Process
 
@@ -58,15 +61,15 @@ def execute_search_batch(scenario, planning_problem_set, veh_type_id=2,
 	# construct motion planner.
 	motion_planner = MotionPlanner(scenario, planning_problem, automata)
 
-	print("Start search..")
+	print("Planning..")
 	time_start = time.process_time()
 	result = motion_planner.search_alg(initial_motion_primitive.Successors, max_tree_depth)
 	time_end = time.process_time()
-	print("Solving this scenario took {} seconds".format(round(time_end - time_start, 2)))
+	print("Execution time: {}".format(round(time_end - time_start, 2)))
 	dict_result = {}
+
 	# result is in form of (final path, used_primitives)
 	if result is not None:
-		
 		result_path = result[0]
 
 		list_state = list()
@@ -81,5 +84,6 @@ def execute_search_batch(scenario, planning_problem_set, veh_type_id=2,
 
 		trajectory = Trajectory(initial_time_step=list_state[0].time_step, state_list=list_state)
 		dict_result[planning_problem_id] = trajectory
-
-	return dict_result
+		return dict_result
+	else:
+		return None

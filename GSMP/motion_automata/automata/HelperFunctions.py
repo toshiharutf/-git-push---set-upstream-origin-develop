@@ -1,10 +1,13 @@
 import sys
-sys.path.append("../../GSMP/tools/")
-sys.path.append("../../GSMP/tools/commonroad-collision-checker")
-sys.path.append("../../GSMP/tools/commonroad-road-boundary")
-sys.path.append("../../GSMP/motion_automata/vehicle_model")
-
 import os
+
+path_commonroad_search = "../../"
+sys.path.append(os.path.join(path_commonroad_search, "GSMP/tools/"))
+sys.path.append(os.path.join(path_commonroad_search, "GSMP/tools/commonroad-collision-checker"))
+sys.path.append(os.path.join(path_commonroad_search, "GSMP/tools/commonroad-road-boundary"))
+sys.path.append(os.path.join(path_commonroad_search, "GSMP/motion_automata/vehicle_model"))
+
+
 import time
 from multiprocessing import Manager, Process
 
@@ -56,15 +59,25 @@ def generate_automata(veh_type_id: int):
     # step 1
     automata = MotionAutomata(veh_type_id)
 
-    prefix = '../../GSMP/motion_automata/motion_primitives/'
     print("Reading motion primitives...")
+    try:
+        prefix = '../../GSMP/motion_automata/motion_primitives/'
 
-    if veh_type_id == 1:
-        automata.readFromXML(prefix + 'V_0.0_20.0_Vstep_1.0_SA_-0.91_0.91_SAstep_0.23_T_0.5_Model_FORD_ESCORT.xml')
-    elif veh_type_id == 2:
-        automata.readFromXML(prefix + 'V_0.0_20.0_Vstep_1.0_SA_-1.066_1.066_SAstep_0.27_T_0.5_Model_BMW320i.xml')
-    elif veh_type_id == 3:
-        automata.readFromXML(prefix + 'V_0.0_20.0_Vstep_1.0_SA_-1.023_1.023_SAstep_0.26_T_0.5_Model_VW_VANAGON.xml')
+        if veh_type_id == 1:
+            automata.readFromXML(prefix + 'V_0.0_20.0_Vstep_1.0_SA_-0.91_0.91_SAstep_0.23_T_0.5_Model_FORD_ESCORT.xml')
+        elif veh_type_id == 2:
+            automata.readFromXML(prefix + 'V_0.0_20.0_Vstep_1.0_SA_-1.066_1.066_SAstep_0.27_T_0.5_Model_BMW320i.xml')
+        elif veh_type_id == 3:
+            automata.readFromXML(prefix + 'V_0.0_20.0_Vstep_1.0_SA_-1.023_1.023_SAstep_0.26_T_0.5_Model_VW_VANAGON.xml')
+    except Exception:
+        prefix = '../../../GSMP/motion_automata/motion_primitives/'
+
+        if veh_type_id == 1:
+            automata.readFromXML(prefix + 'V_0.0_20.0_Vstep_1.0_SA_-0.91_0.91_SAstep_0.23_T_0.5_Model_FORD_ESCORT.xml')
+        elif veh_type_id == 2:
+            automata.readFromXML(prefix + 'V_0.0_20.0_Vstep_1.0_SA_-1.066_1.066_SAstep_0.27_T_0.5_Model_BMW320i.xml')
+        elif veh_type_id == 3:
+            automata.readFromXML(prefix + 'V_0.0_20.0_Vstep_1.0_SA_-1.023_1.023_SAstep_0.26_T_0.5_Model_VW_VANAGON.xml')
 
     # step 2
     automata.createConnectivityLists()
