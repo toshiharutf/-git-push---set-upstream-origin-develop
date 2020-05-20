@@ -5,6 +5,7 @@ from automata.MotionPrimitiveParser import MotionPrimitiveParser
 from automata.MotionPrimitive import MotionPrimitive
 from commonroad.geometry.shape import Rectangle
 
+
 class MotionAutomata:
     """
     Class to handle motion primitives for motion planning
@@ -38,6 +39,9 @@ class MotionAutomata:
 
         self.setVehicleTypeIdPrimitives()
         return
+
+    def sort_primitives(self):
+        self.Primitives.sort(key=lambda x: x.finalState.y, reverse=False)
 
     def createConnectivityListPrimitive(self, primitive: MotionPrimitive) -> None:
         """

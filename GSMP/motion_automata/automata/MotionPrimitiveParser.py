@@ -24,7 +24,7 @@ class MotionPrimitiveParser:
         startSteeringAngle = float(startNode.find('steering_angle').text)
         startVelocity = float(startNode.find('velocity').text)
         startOrientation = float(startNode.find('orientation').text)
-        startTimeStep = float(startNode.find('time_step').text)
+        startTimeStep = int(startNode.find('time_step').text)
 
         startState = StartState(startX, startY, startSteeringAngle, startVelocity, startOrientation, startTimeStep)
 
@@ -35,13 +35,14 @@ class MotionPrimitiveParser:
         finalSteeringAngle = float(finalNode.find('steering_angle').text)
         finalVelocity = float(finalNode.find('velocity').text)
         finalOrientation = float(finalNode.find('orientation').text)
-        finalTimeStep = float(finalNode.find('time_step').text)
+        finalTimeStep = int(finalNode.find('time_step').text)
 
         finalState = FinalState(finalX, finalY, finalSteeringAngle, finalVelocity, finalOrientation, finalTimeStep)
 
         # create trajectory from path node and start/final states
         pathNode = xmlNode.find('Path')
-        timeStepSize = 1.0 / (len(pathNode) + 1)
+        duration = xmlNode.find('Duration')
+        timeStepSize = float(duration.text) / (len(pathNode) + 1)
 
         trajectory = MotionPrimitiveParser.createTrajectoryFromPathStates(pathNode, startState, finalState, timeStepSize)
 
