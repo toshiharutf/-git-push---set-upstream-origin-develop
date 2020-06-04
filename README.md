@@ -6,14 +6,16 @@ commonroad-search/
 	├GSMP/
 		├motion_automata/
 			├automata/
+			├figures/
 			├motion_primitives/
 			└vehicle_model/
 		└tools/
 			├commonroad-collision-checker/
-			└commonroad-road-boundary/
+			├commonroad-road-boundary/
+			├docker/
+			└motion_primitives_generator/
 	├notebooks/	
 		├batch_processing/
-		├motion_primitives_generator/
 		└tutorials/
 	├pdfs/	
 	├scenarios/
