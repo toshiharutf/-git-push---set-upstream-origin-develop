@@ -1,6 +1,6 @@
 # Graph Search-Based Motion Planner with Motion Primitives
 
-This is a programming exercise for the lecture **Introduction to Artificial Intelligence** (WS19) delivered at the  Department of Informatics, TUM. Please clone this repository or download it using the button at the upper-right corner. The repository has the following folder structure:
+This is a programming exercise for the lecture **Introduction to Artificial Intelligence** and **Gems of Informatics II** delivered at the  Department of Informatics, TUM. Please clone this repository or download it using the button at the upper-right corner. The repository has the following folder structure:
 ``` code-block:: text
 commonroad-search/
 	├GSMP/
@@ -97,7 +97,7 @@ Navigate your terminal to `commonroad-search/` folder, and start Jupyter Noteboo
   $ jupyter notebook
 ```
 
-In the prompt up page, navigate to `notebooks/tutorials/` and follow the tutorials `tutorial_commonroad-io.ipynb` and `tutorial_commonroad-search.ipynb`.  Remember to refer to `pdfs/0_Guide_for_Exercise.pdf` for additional explanation. The executed Jupyter notebooks for tutorials can also be found [here](https://commonroad.in.tum.de/tutorials/).
+In the prompt up page, navigate to `notebooks/tutorials/` and follow the tutorials `tutorial_commonroad-search.ipynb`, `cr_uninformed_search_tutorial.ipynb`, and `cr_informed_search_tutorial.ipynb`.  Remember to refer to `pdfs/0_Guide_for_Exercise.pdf` for additional explanation. The executed Jupyter notebooks for tutorials can also be found [here](https://commonroad.in.tum.de/tutorials/).
 
 ## Implement your own search algorithm
 
