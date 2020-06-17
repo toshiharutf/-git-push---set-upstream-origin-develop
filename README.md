@@ -29,9 +29,9 @@ The codes are written in Python 3.7 and tested on Ubuntu 18.04.
 
 You can either install the softwares on your own machine, use a virtual machine image or run a docker image.
 
-1. (Works on Ubuntu) Please follow the installation guide below if you are using your own machine. 
-2. (`Recommended` for Ubuntu, Mac OS & Windows) Alternatively, you can use the virtual machine image provide by us, in which all the necessary modules are installed already. You can down the virtual machine image via [this](https://syncandshare.lrz.de/dlpw/fi2BN8NUepqiQzfG3LzWYf4J/Virtual_Machine.zip) link and run it in Virtual Box. The downloading password and default login password are both `commonroad`. 
-3. (Works on Ubuntu, Mac OS with OS X El Capitan 10.11 or later, Windows 10 64-bit: Pro, Enterprise, or Education, Build 15063 or later) Also, you can run a docker image provided by Tom Dörr. After installing docker, you can run the image using command
+1. Own machine (Works on Ubuntu): Please follow the installation guide below if you are using your own machine. 
+2. Virtual machine (`Recommended` for Ubuntu, Mac OS & Windows): Alternatively, you can use the virtual machine image provide by us, in which all the necessary modules are installed already. You can down the virtual machine image via [this](https://syncandshare.lrz.de/dlpw/fi2BN8NUepqiQzfG3LzWYf4J/Virtual_Machine.zip) link and run it in Virtual Box. The downloading password and default login password are both `commonroad`. 
+3. Docker (Works on Ubuntu, Mac OS with OS X El Capitan 10.11 or later, Windows 10 64-bit: Pro, Enterprise, or Education, Build 15063 or later): Also, you can run a docker image provided by Tom Dörr. After installing docker, you can run the image using command
 
 ```sh
 docker run -it -p 9000:8888 --mount src="$(pwd)",target=/commonroad-search,type=bind tomdoerr/commonroad-search
@@ -66,6 +66,7 @@ Install `Jupyter Notebook` and supplementary modules:
   $ conda install jupyter
   $ conda install ipykernel
   $ pip install ipython-autotime
+  $ pip install PyYAML
   $ conda install ipywidgets
   $ conda install sphinx
   $ conda install scipy
@@ -111,6 +112,7 @@ Open `GSMP/motion_automata/automata/MotionPlanner.py`. Write your own heuristic 
 ```
 
 There are already two search algorithms, namely `A*` and `Greedy Best First Search`, implemented as examples for you. You are free to refer to them for some inspiration.
+The `A*` is not working perfecly and should only serve as code reference how a heuristic can be developed.
 
 ## Troubleshooting
 

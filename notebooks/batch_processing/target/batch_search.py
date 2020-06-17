@@ -56,7 +56,7 @@ def execute_search_batch(scenario, planning_problem_set, veh_type_id,
 	planning_problem_id = list(planning_problem_set.planning_problem_dict.keys())[planning_problem_idx]
 
 	# add initial state of planning problem to automata
-	automata, initial_motion_primitive = add_initial_state_to_automata(automata, planning_problem, flag_print_states = False)
+	automata, initial_motion_primitive = add_initial_state_to_automata(automata, planning_problem)
 
 	# construct motion planner.
 	motion_planner = MotionPlanner(scenario, planning_problem, automata)

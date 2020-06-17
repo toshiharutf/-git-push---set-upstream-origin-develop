@@ -18,7 +18,7 @@ from math import atan2
 import matplotlib.pyplot as plt
 from IPython import display
 from ipywidgets import widgets
-from IPython.display import display
+#from IPython.display import display
 
 # import CommonRoad-io modules
 from commonroad.visualization.draw_dispatch_cr import draw_object
@@ -265,7 +265,8 @@ def start_search(scenario, planning_problem, automata, motion_planner, initial_m
             draw_it(collision_object, draw_params={'collision': {'facecolor': 'magenta'}})
 
         # visualize current trajectory
-        fig.canvas.draw()
+        if flag_plot_intermediate_results is True:
+            fig.canvas.draw()
 
         # wait till process_search terminates
     process_search.join()
