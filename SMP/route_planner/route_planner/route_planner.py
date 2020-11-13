@@ -25,8 +25,9 @@ from SMP.route_planner.route_planner.route import RouteType, RouteCandidateHolde
 try:
     import pycrccosy
 except ModuleNotFoundError as exp:
-    warnings.warn(f"""You won't be able to use the Curvilinear Coordinate System for the Navigator, 
-                          the calculations won't be precise. {exp}""")
+    pass
+    # warnings.warn(f"""You won't be able to use the Curvilinear Coordinate System for the Navigator,
+    #                       the calculations won't be precise. {exp}""")
 
 
 class RoutePlanner:

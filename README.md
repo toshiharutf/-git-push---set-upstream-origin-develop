@@ -2,12 +2,12 @@
 
 This is a programming exercise for the lecture **Foundations of Artificial Intelligence** (WS20) delivered at the Department of Informatics, TUM. The task in this exercise is to implement a heuristic function and/or a search algorithm with motion
 primitives to solve [CommonRoad](https://commonroad.in.tum.de/) scenarios. The following search algorithms have been implemented as examples:
-	1. Breadth First Search
-	2. Depth First Search
-	3. Depth-limited Search
-	4. Uniform Cost Search (aka Dijkstra's algorithm)
-	5. Greedy Best First Search
-	6. A* Search
+- Breadth First Search
+- Depth First Search
+- Depth-limited Search
+- Uniform Cost Search (aka Dijkstra's algorithm)
+- Greedy Best First Search
+- A* Search
 
 The code is written in Python 3.7 and has been tested on Ubuntu 18.04. As the first step, clone this repository with:
 
@@ -56,14 +56,14 @@ Then, install the dependencies with:
 $ pip install -r requirements.txt
 ```
 
-This will install related dependencies specified in the requirements.txt. 
+This will install related dependencies specified in the `requirements.txt`. 
 
 Next, we move on to the installation of [CommonRoad Drivability Checker](https://commonroad.in.tum.de/drivability_checker). This package provides functionalities such as collision checks, kinematic feasibility checks, road boundary checks, etc. Full installation commands are given below, other installation options can be found [here](https://commonroad.in.tum.de/docs/commonroad-drivability-checker/sphinx/installation.html).
 
 ```sh
 $ git clone https://gitlab.lrz.de/tum-cps/commonroad-drivability-checker.git
 $ cd commonroad-drivability-checker
-$ bash build.sh -e /path/to/your/anaconda3/envs/commonroad-py37 -v 3.X --cgal --serializer -i -j 4
+$ sudo bash build.sh -e /path/to/your/anaconda3/envs/commonroad-py37 -v 3.X --cgal --serializer -i -j 4
 ```
 
 `Note`: you need to substitute `/path/to/your/anaconda3/envs/commonroad-py37` with the path to your Anaconda environment, and `X` with your python version (e. g. setting X to 7 for 3.7).

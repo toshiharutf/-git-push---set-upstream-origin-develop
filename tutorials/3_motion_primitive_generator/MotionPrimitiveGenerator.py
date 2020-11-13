@@ -15,7 +15,7 @@ import xml.etree.ElementTree as et
 from xml.dom import minidom
 
 from commonroad.scenario.trajectory import State, Trajectory
-from commonroad.common.solution_writer import VehicleType
+from commonroad.common.solution import VehicleType
 from commonroad_dc.feasibility.vehicle_dynamics import VehicleDynamics
 import commonroad_dc.feasibility.feasibility_checker as feasibility_checker
 

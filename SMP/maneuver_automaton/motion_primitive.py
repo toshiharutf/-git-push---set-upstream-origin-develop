@@ -1,10 +1,10 @@
 import warnings
-from typing import List
 from copy import deepcopy
+from typing import List
 
 import numpy as np
+from commonroad.common.solution import VehicleModel, VehicleType
 from commonroad.scenario.trajectory import Trajectory, State
-from commonroad.common.solution_writer import VehicleModel, VehicleType
 
 
 class MotionPrimitive:
