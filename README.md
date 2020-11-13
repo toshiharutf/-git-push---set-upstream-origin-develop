@@ -1,122 +1,90 @@
-# Graph Search-Based Motion Planner with Motion Primitives
+# CommonRoad Search: Search-based Motion Planner with Motion Primitives
 
-This is a programming exercise for the lecture **Introduction to Artificial Intelligence** and **Gems of Informatics II** delivered at the  Department of Informatics, TUM. Please clone this repository or download it using the button at the upper-right corner. The repository has the following folder structure:
-``` code-block:: text
-commonroad-search/
-	├GSMP/
-		├motion_automata/
-			├automata/
-			├figures/
-			├motion_primitives/
-			└vehicle_model/
-		└tools/
-			├commonroad-collision-checker/
-			├commonroad-road-boundary/
-			├docker/
-			└motion_primitives_generator/
-	├notebooks/	
-		├batch_processing/
-		└tutorials/
-	├pdfs/	
-	├scenarios/
-		├exercise/
-		└tutorial/
-	└solutions/ 
-```
-The codes are written in Python 3.7 and tested on Ubuntu 18.04. 
+This is a programming exercise for the lecture **Foundations of Artificial Intelligence** (WS20) delivered at the Department of Informatics, TUM. The task in this exercise is to implement a heuristic function and/or a search algorithm with motion
+primitives to solve [CommonRoad](https://commonroad.in.tum.de/) scenarios. The following search algorithms have been implemented as examples:
+	1. Breadth First Search
+	2. Depth First Search
+	3. Depth-limited Search
+	4. Uniform Cost Search (aka Dijkstra's algorithm)
+	5. Greedy Best First Search
+	6. A* Search
 
-## Ways to Install
-
-You can either install the softwares on your own machine, use a virtual machine image or run a docker image.
-
-1. Own machine (Works on Ubuntu): Please follow the installation guide below if you are using your own machine. 
-2. Virtual machine (`Recommended` for Ubuntu, Mac OS & Windows): Alternatively, you can use the virtual machine image provide by us, in which all the necessary modules are installed already. You can down the virtual machine image via [this](https://syncandshare.lrz.de/getlink/fiBX3hqrmDo5DKpGysFGNDie/07_VirtualMachine) link and run it in Virtual Box. The downloading password and default login password are both `commonroad`. 
-3. Docker (Works on Ubuntu, Mac OS with OS X El Capitan 10.11 or later, Windows 10 64-bit: Pro, Enterprise, or Education, Build 15063 or later): Also, you can run a docker image provided by Tom Dörr. After installing docker, you can run the image using command
+The code is written in Python 3.7 and has been tested on Ubuntu 18.04. As the first step, clone this repository with:
 
 ```sh
-docker run -it -p 9000:8888 --mount src="$(pwd)",target=/commonroad-search,type=bind tomdoerr/commonroad-search
+$ git clone https://gitlab.lrz.de/tum-cps/commonroad-search.git
 ```
+## Ways to run
 
-&ensp;&ensp;&ensp;&ensp;&ensp;and open the Jupyter Notebook by visiting `localhost:9000` in your web browser.
+You can either run the code locally, in a virtual machine, or in a docker container.
 
-After you have set up your environment, please further proceed with `pdfs/0_Guide_for_Exercise.pdf`. 
+1. Ubuntu, MacOS, Windows: a [VirtualBox](https://www.virtualbox.org/) image is available in which all the necessary packages have been installed. The virtual machine image can be downloaded via `this-to-update` link. The downloading and the default login passwords are both `commonroad`.
+2. Ubuntu, MacOS, Windows: a docker file and a docker image is available if you wish to run the code with docker container. Refer to `docker/README.md` for instructions. Minimum system requirements can be found [here](https://docs.docker.com/desktop/).
+3. Ubuntu 18.04: If you wish to install the code locally, proceed with the installation guide below.
 
-## Installation guide
+## Installation Guide
 
-`Skip this section if you intend to use the provided virtual machine or docker image.`
+`skip this section if you intend to run the code in the virtual machine or in the docker container.`
 
-We recommend using [Anaconda](https://www.anaconda.com/) to manage your environment so that even if you mess up something, you can always have a safe and clean restart. A guide for managing the environments can be found [here](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html). Also, the usage of [PyCharm](https://www.jetbrains.com/pycharm/) is highly recommended (free version available for students).
+We recommend using [Anaconda](https://www.anaconda.com/) to manage your environment so that even if you mess something up, you can always have a safe and clean restart. A guide for managing python environments with Anaconda can be found [here](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
 
-After installing Anaconda, create a new environment by command:
+After installing Anaconda, create a new environment with:
 ``` sh
- $ conda create -n commonroad-py37 python=3.7
+$ conda create -n commonroad-py37 python=3.7
 ```
 
-Here the name of the environment is called **commonroad-py37**. You may also change this name as you wish. In such case, don't forget to change it in the following commands as well.
-
-`Always activate` this environment before you do anything related:
+Here the name of the environment is called **commonroad-py37**. You may also change this name as you wish. In such case, don't forget to change it in the following commands as well. `Always activate` this environment before you do anything related:
 
 ```sh
-  $ conda activate commonroad-py37
-  or
-  $ source activate commonroad-py37
+$ conda activate commonroad-py37
+or
+$ source activate commonroad-py37
 ```
 Install `Jupyter Notebook` and supplementary modules:
 ```sh
-  $ conda install jupyter
-  $ conda install ipykernel
-  $ pip install ipython-autotime
-  $ pip install PyYAML
-  $ conda install ipywidgets
-  $ conda install sphinx
-  $ conda install scipy
-  $ jupyter nbextension install --py widgetsnbextension --user
-  $ jupyter nbextension enable widgetsnbextension --user --py
+$ conda install jupyter ipykernel ipywidgets sphinx scipy
+$ jupyter nbextension install --py widgetsnbextension --user
+$ jupyter nbextension enable widgetsnbextension --user --py
 ```
-
-This exercise has three main dependencies that need to be installed.
-
-### 1. CommonRoad-io
-
-As documented in CommonRoad-io [Documentation](https://commonroad.in.tum.de/static/docs/commonroad-io/index.html), type in the following command to install the package:
+Install `Imagemagick` (required for saving GIF animations of solutions):
+```sh
+$ sudo apt-get install imagemagick imagemagick-doc
+```
+Then, install the dependencies with:
 
 ```sh
-  $ pip install commonroad-io
+$ pip install -r requirements.txt
 ```
 
+This will install related dependencies specified in the requirements.txt. 
 
-### 2. CommonRoad-Collision-Checker
-Go to folder `GSMP/tools/commonroad-collision-checker/` and follow the instruction in README.rst. (You may navigate to it from this page for a better rendering of the .rst file)
+Next, we move on to the installation of [CommonRoad Drivability Checker](https://commonroad.in.tum.de/drivability_checker). This package provides functionalities such as collision checks, kinematic feasibility checks, road boundary checks, etc. Full installation commands are given below, other installation options can be found [here](https://commonroad.in.tum.de/docs/commonroad-drivability-checker/sphinx/installation.html).
 
-A tutorial of CommonRoad Collision Checker can be found [here](https://commonroad.in.tum.de/tutorials/).
+```sh
+$ git clone https://gitlab.lrz.de/tum-cps/commonroad-drivability-checker.git
+$ cd commonroad-drivability-checker
+$ bash build.sh -e /path/to/your/anaconda3/envs/commonroad-py37 -v 3.X --cgal --serializer -i -j 4
+```
 
-### 3. CommonRoad-Road-Boundary
-Go to folder `GSMP/tools/commonroad-road-boundary/` and follow the instruction in README.md. (You may navigate to it from this page for a better rendering of the .md file) In case you face an error, refer to troubleshooting section. 
+`Note`: you need to substitute `/path/to/your/anaconda3/envs/commonroad-py37` with the path to your Anaconda environment, and `X` with your python version (e. g. setting X to 7 for 3.7).
 
-## Tutorials
 
-Navigate your terminal to `commonroad-search/` folder, and start Jupyter Notebook with:
+## Getting Started
+
+Full description of the exercise is provided in `exercise_guide.pdf`. 
+
+To proceed with the tutorials, open your terminal in `commonroad-search/` folder, and launch Jupyter Notebook kernel with:
+
 ```shell
-  $ jupyter notebook
+$ jupyter notebook
 ```
 
-In the prompt up page, navigate to `notebooks/tutorials/` and follow the tutorials `tutorial_commonroad-search.ipynb`, `cr_uninformed_search_tutorial.ipynb`, and `cr_informed_search_tutorial.ipynb`.  Remember to refer to `pdfs/0_Guide_for_Exercise.pdf` for additional explanation. The executed Jupyter notebooks for tutorials can also be found [here](https://commonroad.in.tum.de/tutorials/).
+In the pop-up tab (or: open http://localhost:9000/ if ran with docker, otherwise http://localhost:8888/, in the explorer), navigate to `tutorials/` and follow the tutorials.
 
-## Implement your own search algorithm
+## Implementing your search algorithm
 
-Open `GSMP/motion_automata/automata/MotionPlanner.py`. Write your own heuristic functions and/or search algorithm in the following functions:
+Implement your heuristic function and/or search algorithm in `SMP/motion_planner/search_algorithms/student.py`. The usage of [PyCharm](https://www.jetbrains.com/pycharm/) is highly recommended for writing and debugging python code (freely available to students).
 
-```python
-	def calc_heuristic_cost()
-	def search_alg()
-```
+## Questions & Answers 
 
-There are already two search algorithms, namely `A*` and `Greedy Best First Search`, implemented as examples for you. You are free to refer to them for some inspiration.
-The `A*` is not working perfecly and should only serve as code reference how a heuristic can be developed.
-
-## Troubleshooting
-
-### 1. Boundary library not working properly
-
-If there are errors stating not finding the boundary library (e. g. module `construction` not found) while going through the second tutorial, try manually copying all the contents under folder `GSMP/tools/commonroad-road-boundary/`  into `/path/to/your/anaconda3/envs/lib/python3.7/site-packages/commonroad-road-boundary/`. 
-`Make sure to copy all files within the folder manually, not just copying the folder it self. Also, remember to add this path to your IDE's (e. g. PyCharm) interpretor path.`
+If you encountered any problem, please raise it in the [CommonRoad Forum](https://commonroad.in.tum.de/forum/) so that other students can also benefit from the answers to your questions.
