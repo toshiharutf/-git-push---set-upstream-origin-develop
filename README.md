@@ -85,6 +85,11 @@ In the pop-up tab (or: open http://localhost:9000/ if ran with docker, otherwise
 
 Implement your heuristic function and/or search algorithm in `SMP/motion_planner/search_algorithms/student.py`. The usage of [PyCharm](https://www.jetbrains.com/pycharm/) is highly recommended for writing and debugging python code (freely available to students).
 
+## Useful Tools
+If you are new here, it's worth to take a look at the following tools:
+- [Jupyter Notebook](): an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. An introduction can be found [here](https://realpython.com/jupyter-notebook-introduction/).
+- [PyCharm](https://www.jetbrains.com/pycharm/): one of the best Python IDEs on the market. It is free for students. A tutorial video can be seen [here](https://www.youtube.com/watch?v=56bPIGf4us0&list=PLX4nwNAsU8OJUuLvmUvxpg-bdPqYVODGU).
+- [GitKraken](https://www.gitkraken.com/): a powerful and elegant multi-platform graphical interface for Git, as an alternative to the command line. It is free for students (with GitHub account). An introduction to GitKraken can be found [here](https://www.youtube.com/c/Gitkraken/playlists).
 ## Questions & Answers 
 
 If you encountered any problem, please raise it in the [CommonRoad Forum](https://commonroad.in.tum.de/forum/) so that other students can also benefit from the answers to your questions.
