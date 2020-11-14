@@ -28,12 +28,12 @@ For other platforms, visit https://docs.docker.com/get-docker/.
 ### Build docker image
 In the folder where `commonroad_search_2020.dockerfile` is located:
 ```
-sudo docker build -t "commonroad_search_2020"  - < commonroad_search_2020.dockerfile
+sudo docker build -t commonroad-search:2020_AI  - < commonroad_search_2020.dockerfile
 ```
 
 ### Run the docker container
 In the root folder of the CommonRoad Search repository:
 ```
-sudo docker run -it -p 9000:8888 --mount src="$(pwd)",target=/commonroad/commonroad-search,type=bind commonroad_search_2020
+sudo docker run -it -p 9000:8888 --mount src="$(pwd)",target=/commonroad/commonroad-search,type=bind commonroad-search:2020_AI
 ```
 You can now access the Jupyter Notebook by opening `localhost:9000` in your browser.

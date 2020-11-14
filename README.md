@@ -18,13 +18,13 @@ $ git clone https://gitlab.lrz.de/tum-cps/commonroad-search.git
 
 You can either run the code locally, in a virtual machine, or in a docker container.
 
-1. Ubuntu, MacOS, Windows: a [VirtualBox](https://www.virtualbox.org/) image is available in which all the necessary packages have been installed. The virtual machine image can be downloaded via [this](https://syncandshare.lrz.de/getlink/fi451Sy2CYcJMBT7hZbov5qg/LUbuntu18.04_VirturalBox_2020AI%5B13.11%5D.zip) link. The downloading and the default login passwords are both `commonroad`.
-2. Ubuntu, MacOS, Windows: a docker file and a docker image is available if you wish to run the code with docker container. Refer to `docker/README.md` for instructions. Minimum system requirements can be found [here](https://docs.docker.com/desktop/).
-3. Ubuntu 18.04: If you wish to install the code locally, proceed with the installation guide below.
+1. **Ubuntu, MacOS, Windows**: a [VirtualBox](https://www.virtualbox.org/) image is available in which all the necessary packages have been installed. The virtual machine image can be downloaded via [this](https://syncandshare.lrz.de/getlink/fi451Sy2CYcJMBT7hZbov5qg/LUbuntu18.04_VirturalBox_2020AI%5B13.11%5D.zip) link. The downloading and the default login passwords are both `commonroad`.
+2. **Ubuntu, MacOS, Windows**: a docker file and a docker image is available if you wish to run the code in a docker container. Refer to `docker/README.md` for further instructions. Minimum system requirements are listed [here](https://docs.docker.com/desktop/).
+3. **Ubuntu 18.04**: If you wish to install the code locally, proceed with the installation guide below.
 
 ## Installation Guide
 
-`skip this section if you intend to run the code in the virtual machine or in the docker container.`
+**skip this section if you intend to run the code in the virtual machine or in the docker container.**
 
 We recommend using [Anaconda](https://www.anaconda.com/) to manage your environment so that even if you mess something up, you can always have a safe and clean restart. A guide for managing python environments with Anaconda can be found [here](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
 
@@ -33,7 +33,7 @@ After installing Anaconda, create a new environment with:
 $ conda create -n commonroad-py37 python=3.7
 ```
 
-Here the name of the environment is called **commonroad-py37**. You may also change this name as you wish. In such case, don't forget to change it in the following commands as well. `Always activate` this environment before you do anything related:
+Here the name of the environment is called **commonroad-py37**. You may also change this name as you wish. In such case, don't forget to change it in the following commands as well. **Always activate** this environment before you do anything related:
 
 ```sh
 $ conda activate commonroad-py37
@@ -56,7 +56,7 @@ Then, install the dependencies with:
 $ pip install -r requirements.txt
 ```
 
-This will install related dependencies specified in the `requirements.txt`. 
+This will install related dependencies specified in `requirements.txt`. 
 
 Next, we move on to the installation of [CommonRoad Drivability Checker](https://commonroad.in.tum.de/drivability_checker). This package provides functionalities such as collision checks, kinematic feasibility checks, road boundary checks, etc. Full installation commands are given below, other installation options can be found [here](https://commonroad.in.tum.de/docs/commonroad-drivability-checker/sphinx/installation.html).
 
@@ -66,24 +66,20 @@ $ cd commonroad-drivability-checker
 $ sudo bash build.sh -e /path/to/your/anaconda3/envs/commonroad-py37 -v 3.X --cgal --serializer -i -j 4
 ```
 
-`Note`: you need to substitute `/path/to/your/anaconda3/envs/commonroad-py37` with the path to your Anaconda environment, and `X` with your python version (e. g. setting X to 7 for 3.7).
+**Note**: you need to substitute `/path/to/your/anaconda3/envs/commonroad-py37` with the path to your Anaconda environment, and `X` with your python version (e. g. setting X to 7 for 3.7).
 
 
 ## Getting Started
 
 Full description of the exercise is provided in `exercise_guide.pdf`. 
 
-To proceed with the tutorials, open your terminal in `commonroad-search/` folder, and launch Jupyter Notebook kernel with:
+To proceed with the tutorials, open a terminal in `commonroad-search/` folder, and launch Jupyter Notebook kernel with:
 
 ```shell
 $ jupyter notebook
 ```
 
-In the pop-up tab (or: open http://localhost:9000/ if ran with docker, otherwise http://localhost:8888/, in the explorer), navigate to `tutorials/` and follow the tutorials.
-
-## Implementing your search algorithm
-
-Implement your heuristic function and/or search algorithm in `SMP/motion_planner/search_algorithms/student.py`. The usage of [PyCharm](https://www.jetbrains.com/pycharm/) is highly recommended for writing and debugging python code (freely available to students).
+In the pop-up tab (or: open http://localhost:9000/ if ran with docker, otherwise http://localhost:8888/, in the explorer), navigate to `tutorials/` and follow the tutorials one by one. After that, you may proceed with the exercise itself (see exercise guide for more detail).
 
 ## Useful Tools
 If you are new here, it's worth to take a look at the following tools:

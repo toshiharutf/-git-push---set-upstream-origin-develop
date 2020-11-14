@@ -7,13 +7,5 @@ The planner supports different backends to search for the shortest route in the 
 1. NETWORKX: uses built-in functions from the networkx package, tends to change lane later
 2. NETWORKX_REVERSED: uses built-in functions from the networkx package, tends to change lane earlier
 3. PRIORITY_QUEUE: uses A-star search to find routes, lane change maneuver depends on the heuristic cost
-## Installation
-
-To use this module, run the setup script in the root folder:
-
-```bash
-python setup.py install
-```
-Or simply install the dependencies listed in `requirements.txt` and add this repository to your python path.
 ## Tutorial
 A tutorial can be found at `tutorial/tutorial_route_planner.ipynb`.
