@@ -9,6 +9,7 @@ __status__ = "Beta"
 import enum
 from typing import List, Dict, Tuple, Type
 
+import numpy as np
 import ipywidgets as widgets
 import matplotlib.pyplot as plt
 from IPython import display
@@ -191,7 +192,9 @@ def display_steps(scenario_data, config, algorithm, **args):
 
 
 def plot_primitives(list_primitives, figsize=(12, 3)):
-    plt.figure(figsize=figsize)
+    fig = plt.figure(figsize=figsize)
+    ax = fig.gca()
+
     for primitive in list_primitives:
         list_x = [state.position[0] for state in primitive.trajectory.state_list]
         list_y = [state.position[1] for state in primitive.trajectory.state_list]
@@ -201,7 +204,11 @@ def plot_primitives(list_primitives, figsize=(12, 3)):
 
         plt.plot(list_x, list_y)
 
+    ax.set_xticks(np.arange(-5, 20, 0.5))
+    ax.set_yticks(np.arange(-5, 5., 0.5))
+
     plt.axis('equal')
+    plt.grid(alpha=0.5)
     plt.show()
 
 
@@ -251,7 +258,14 @@ def visualize_solution(scenario: Scenario, planning_problem_set: PlanningProblem
         draw_object(planning_problem_set)
         draw_object(dynamic_obstacle,
                     draw_params={'time_begin': i,
-                                 'dynamic_obstacle': {'shape': {'facecolor': 'green'}}})
+                                 'dynamic_obstacle': {'shape': {'facecolor': 'green'},
+                                                      'trajectory': {'draw_trajectory': True,
+                                                                     'facecolor': '#ff00ff',
+                                                                     'draw_continuous': True,
+                                                                     'z_order': 60,
+                                                                     'line_width': 5}
+                                                      }
+                                 })
 
         plt.gca().set_aspect('equal')
         plt.show()
