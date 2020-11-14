@@ -19,7 +19,7 @@ cmake \
 libeigen3-dev \ 
 socat \
 tk-dev -y
-RUN bash -ic 'pip install jupyter tqdm imageio pyyaml ipywidgets'
+RUN bash -ic 'pip install jupyter tqdm imageio pyyaml ipywidgets networkx'
 
 # link python3.7 to python3
 RUN rm /usr/bin/python3 && ln -sf python3.7 /usr/bin/python3
@@ -28,7 +28,7 @@ RUN rm /usr/bin/python3 && ln -sf python3.7 /usr/bin/python3
 WORKDIR /commonroad
 
 # install commonroad-io
-RUN pip install commonroad-io
+RUN pip install commonroad-io==2020.3
 
 # build and install commonroad-drivability-checker
 RUN git clone https://gitlab.lrz.de/tum-cps/commonroad-drivability-checker.git && \
