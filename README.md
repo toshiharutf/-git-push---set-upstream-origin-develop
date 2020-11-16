@@ -1,7 +1,6 @@
 # CommonRoad Search: Search-based Motion Planner with Motion Primitives
 
-This is a programming exercise for the lecture **Foundations of Artificial Intelligence** (WS20) delivered at the Department of Informatics, TUM. The task in this exercise is to implement a heuristic function and/or a search algorithm with motion
-primitives to solve [CommonRoad](https://commonroad.in.tum.de/) scenarios. The following search algorithms have been implemented as examples:
+This is a programming exercise of the lecture **Techniques in Artificial Intelligence (IN2062)** delivered at the Department of Informatics, TUM. The task in this exercise is to implement a heuristic function and/or a search algorithm with motion primitives to solve [CommonRoad](https://commonroad.in.tum.de/) scenarios. The following search algorithms have been implemented as examples:
 - Breadth First Search
 - Depth First Search
 - Depth-limited Search
