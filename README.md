@@ -27,7 +27,7 @@ You can either run the code locally, in a virtual machine, or in a docker contai
 
 3. **Ubuntu 18.04**: If you wish to install the code locally, proceed with the installation guide below.
 
-## Installation Guide
+### Installation Guide for Option 3:
 
 **skip this section if you intend to run the code in the virtual machine or in the docker container.**
 
