@@ -17,7 +17,7 @@ $ git clone https://gitlab.lrz.de/tum-cps/commonroad-search.git
 
 You can either run the code locally, in a virtual machine, or in a docker container.
 
-1. **Ubuntu, MacOS, Windows**: a [VirtualBox](https://www.virtualbox.org/) image is available in which all the necessary packages have been installed. The virtual machine image can be downloaded via [this](https://syncandshare.lrz.de/getlink/fi451Sy2CYcJMBT7hZbov5qg/LUbuntu18.04_VirturalBox_2020AI%5B13.11%5D.zip) link. The downloading and the default login passwords are both `commonroad`. You can update to the latest commit with typing the command in the `commonroad-search/` folder:
+1. **Ubuntu, MacOS, Windows**: a [VirtualBox](https://www.virtualbox.org/) image is available in which all the necessary packages have been installed. The virtual machine image can be downloaded via [this](https://syncandshare.lrz.de/getlink/fi2rGaPZkzrajfuyZxYcJyj1/LUbuntu18.04_VirturalBox_2020AI%5B13.11%5D.zip) link. The downloading and the default login passwords are both `commonroad`. You can update to the latest commit with typing the command in the `commonroad-search/` folder:
 
    ```sh
    $ git pull
@@ -27,7 +27,7 @@ You can either run the code locally, in a virtual machine, or in a docker contai
 
 3. **Ubuntu 18.04**: If you wish to install the code locally, proceed with the installation guide below.
 
-### Installation Guide for Option 3:
+## Installation Guide
 
 **skip this section if you intend to run the code in the virtual machine or in the docker container.**
 
