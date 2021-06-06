@@ -1,3 +1,6 @@
+## This is a forked branch from the Commonroad-search repository project from the TUM Department of Informatics
+## The original repo can be found in: https://gitlab.lrz.de/tum-cps/commonroad-search
+
 # CommonRoad Search: Search-based Motion Planner with Motion Primitives
 
 This is a programming exercise of the lecture **Techniques in Artificial Intelligence (IN2062)** delivered at the Department of Informatics, TUM. The task in this exercise is to implement a heuristic function and/or a search algorithm with motion primitives to solve [CommonRoad](https://commonroad.in.tum.de/) scenarios. The following search algorithms have been implemented as examples:
